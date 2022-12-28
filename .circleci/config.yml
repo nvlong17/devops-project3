@@ -96,6 +96,7 @@ jobs:
           name: Test for BE vulnerable package
           command: |
             cd backend
+            npm install
             # npm install oauth-sign@^0.9.0
             npm audit fix --audit-level=critical --force
             # If the "npm audit fix" command above could not fix all critical vulnerabilities, try “npm audit fix --force” again
@@ -134,7 +135,9 @@ jobs:
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --output text >> .circleci/ansible/inventory.txt
-      - run: cat .circleci/ansible/inventory.txt
+      - run: 
+          name: Check Ansible file
+          command: cat .circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
           paths:
