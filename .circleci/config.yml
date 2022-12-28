@@ -152,7 +152,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "82:83:00:db:6e:31:6c:6a:51:0c:3f:7c:60:14:21:4b"
+            - "ec:6f:2c:2e:a6:55:47:bf:a5:e1:1a:fe:77:74:95:fa"
       - attach_workspace:
           at: ~/
       - run:
@@ -168,6 +168,7 @@ jobs:
           name: Configure server
           command: |
             cd .circleci/ansible
+            export ANSIBLE_HOST_KEY_CHECKING=False
             ansible-playbook -i inventory.txt configure-server.yml
       # Here's where you will add some code to rollback on failure
       - destroy-environment
@@ -196,7 +197,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "82:83:00:db:6e:31:6c:6a:51:0c:3f:7c:60:14:21:4b"
+            - "ec:6f:2c:2e:a6:55:47:bf:a5:e1:1a:fe:77:74:95:fa"
       - attach_workspace:
           at: ~/
       - run:
@@ -233,7 +234,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - 82:83:00:db:6e:31:6c:6a:51:0c:3f:7c:60:14:21:4b
+            - ec:6f:2c:2e:a6:55:47:bf:a5:e1:1a:fe:77:74:95:fa
       - attach_workspace:
           at: ~/
       - run:
