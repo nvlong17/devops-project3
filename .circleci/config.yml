@@ -198,13 +198,13 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "ec:6f:2c:2e:a6:55:47:bf:a5:e1:1a:fe:77:74:95:fa"
-      - attach_workspace:
-          at: ~/
       - run:
           name: Install OS dependencies
           command: |
-            curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+            curl -sL https://rpm.nodesource.com/setup_10.x | bash -
             yum install tar gzip python3 nodejs -y
+      - attach_workspace:
+          at: ~/
       - run:
           name: Get backend url
           command: |
@@ -246,7 +246,7 @@ jobs:
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             ./aws/install
-            curl -fsSL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+            curl -fsSL https://deb.nodesource.com/setup_13.x | bash -
             apt install -y nodejs
       - run:
           name: Deploy backend
