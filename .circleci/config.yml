@@ -76,12 +76,14 @@ jobs:
       - run:
           name: Test for FE vulnerable package
           command: |
-            echo 'Breaking changes. Unable to perform'
-            # cd frontend
-            # npm install
-            # npm audit --audit-level=critical
-            # npm audit fix --audit-level=critical --force
-            # npm audit fix --force
+            cd frontend
+            npm install
+            # npm install oauth-sign@^0.9.0
+            npm audit fix --audit-level=critical --force
+            # If the "npm audit fix" command above could not fix all critical vulnerabilities, try “npm audit fix --force” again
+            npm audit fix --force
+            npm audit --audit-level=critical
+            npm audit fix
 
   scan-backend:
     docker:
@@ -93,12 +95,13 @@ jobs:
       - run:
           name: Test for BE vulnerable package
           command: |
-            echo 'Breaking changes. Unable to perform'
-            # cd backend
-            # npm install
-            # npm audit --audit-level=critical
-            # npm audit fix --audit-level=critical --force
-            # npm audit fix --force
+            cd backend
+            # npm install oauth-sign@^0.9.0
+            npm audit fix --audit-level=critical --force
+            # If the "npm audit fix" command above could not fix all critical vulnerabilities, try “npm audit fix --force” again
+            npm audit fix --force
+            npm audit --audit-level=critical
+            npm audit fix
 
   deploy-infrastructure:
     docker:
