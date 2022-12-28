@@ -146,6 +146,31 @@ jobs:
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
 
+  configure-infrastructure:
+    docker:
+      - image: python:3.11-slim
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "82:83:00:db:6e:31:6c:6a:51:0c:3f:7c:60:14:21:4b"
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Install OS dependencies
+          command: |
+            apt install tar gzip
+            pip install ansible
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            ./aws/install
+      - run:
+          name: Configure server
+          command: |
+            # Your code here
+            exit 1
+      # Here's where you will add some code to rollback on failure
+
 workflows:
   default:
     jobs:
