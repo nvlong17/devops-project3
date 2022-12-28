@@ -159,7 +159,7 @@ jobs:
           name: Install OS dependencies
           command: |
             apt update -y
-            apt install tar gzip curl zip unzip -y
+            apt install tar gzip curl zip unzip ssh -y
             pip install ansible
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
