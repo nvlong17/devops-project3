@@ -1,5 +1,5 @@
 [URL01] https://github.com/nvlong17/devops-project3
-[URL02] http://udapeople-a9ce3dc.s3-website-ap-southeast-1.amazonaws.com
+[URL02] http://udapeople-49d0ed7.s3-website-ap-southeast-1.amazonaws.com
 [URL03] d24w68ufhz69ji.cloudfront.net
 [URL04] http://ec2-54-179-120-125.ap-southeast-1.compute.amazonaws.com:3030/api/status
 [URL05] http://ec2-54-254-54-186.ap-southeast-1.compute.amazonaws.com:9090/targets
