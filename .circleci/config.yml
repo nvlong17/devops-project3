@@ -380,7 +380,7 @@ jobs:
               then
                 echo "Start clean up old resources from ID ${stack_name:10:17}"
                 echo S3_bucket="s3://udapeople-${stack_name:10:17}"
-                aws s3 rm "s3://udapeople-${stack_name:10:17}" --force
+                aws s3 rm "s3://udapeople-${stack_name:10:17}" --recursive
                 aws cloudformation delete-stack --stack-name "udapeople-backend-${stack_name:10:17}"
                 aws cloudformation delete-stack --stack-name "udapeople-frontend-${stack_name:10:17}"
               fi
@@ -401,6 +401,9 @@ workflows:
           requires: [build-frontend]
       - deploy-infrastructure:
           requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+          filters:
+            branches:
+              only: [master]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
       - run-migrations:
