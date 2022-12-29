@@ -374,7 +374,7 @@ jobs:
                     --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
             echo Stack names: "${STACKS[@]}"   
 
-            if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
+            if [[ "${OldWorkflowID}" =~ "${STACKS[@]}" ]]
             then
               echo "Start clean up old resources"
               echo S3_bucket="s3://udapeople-${OldWorkflowID:10:17}"
