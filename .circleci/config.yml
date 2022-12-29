@@ -327,7 +327,7 @@ jobs:
       - run:
           name: Frontend smoke test.
           command: |
-            export FE_URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com/#/employees"            
+            export FE_URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-${AWS_DEFAULT_REGION}.amazonaws.com/#/employees"            
             echo ${FE_URL} 
             if curl -s $FE_URL | grep "Welcome"
             then
@@ -337,8 +337,8 @@ jobs:
               exit 1
             fi
       # Here's where you will add some code to rollback on failure  
-      # - destroy-environment
-      # - revert-migrations
+      - destroy-environment
+      - revert-migrations
 
   cloudfront-update:
     docker:
