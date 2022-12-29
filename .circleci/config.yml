@@ -184,6 +184,12 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          name: Install OS dependencies
+          command: |
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            ./aws/install
+      - run:
           name: Run migrations
           command: |
             cd backend
