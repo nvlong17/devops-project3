@@ -234,7 +234,6 @@ jobs:
       - destroy-environment
       - revert-migrations
 
-
   deploy-backend:
     docker:
       - image: python:3.11-slim-buster
@@ -414,6 +413,8 @@ workflows:
           requires: [deploy-backend, deploy-frontend]
       - cloudfront-update:
           requires: [smoke-test]
+      - cleanup:
+          requires: [cloudfront-update]
 
 commands:
   destroy-environment:
