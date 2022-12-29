@@ -376,7 +376,7 @@ jobs:
 
             for stack_name in ${STACKS[@]}; do
               echo $stack_name
-              if [[ "${stack_name:10:17}" =~ "${CIRCLE_WORKFLOW_ID:0:7}" ]]
+              if [[ "${stack_name:10:17}" != "${CIRCLE_WORKFLOW_ID:0:7}" ]]
               then
                 echo "Start clean up old resources from ID ${stack_name:10:17}"
                 echo S3_bucket="s3://udapeople-${stack_name:10:17}"
