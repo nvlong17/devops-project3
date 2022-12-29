@@ -385,6 +385,7 @@ jobs:
               aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID:0:7}"
             else
               echo "AWS clean"
+            fi
 
 workflows:
   default:
